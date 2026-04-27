@@ -11,6 +11,7 @@ workflows:
           flutter clean
           rm -rf ~/.pub-cache
           flutter pub get
+          flutter pub upgrade
       - name: Build APK
         script: |
           flutter build apk --release --no-tree-shake-icons
