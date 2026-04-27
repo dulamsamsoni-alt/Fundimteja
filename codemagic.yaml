@@ -1,0 +1,23 @@
+workflows:
+  android-apk:
+    name: Fundi Mteja APK
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      java: 17
+    cache:
+      enable: false
+    scripts:
+      - name: Clean Project
+        script: |
+          flutter clean
+          flutter pub get
+      - name: Build APK
+        script: |
+          flutter build apk --release --no-tree-shake-icons
+    artifacts:
+      - build/app/outputs/**/*.apk
+    publishing:
+      email:
+        recipients:
+          - dulamsamsoni@gmail.com
