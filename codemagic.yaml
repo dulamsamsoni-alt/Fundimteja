@@ -5,12 +5,11 @@ workflows:
     environment:
       flutter: stable
       java: 17
-    cache:
-      enable: false
     scripts:
       - name: Clean Project
         script: |
           flutter clean
+          rm -rf ~/.pub-cache
           flutter pub get
       - name: Build APK
         script: |
