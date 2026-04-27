@@ -6,12 +6,11 @@ workflows:
       flutter: stable
       java: 17
     scripts:
-      - name: Clean Project
+      - name: Nuke Android & Recreate V2
         script: |
-          flutter clean
-          rm -rf ~/.pub-cache
+          rm -rf android
+          flutter create .
           flutter pub get
-          flutter pub upgrade
       - name: Build APK
         script: |
           flutter build apk --release --no-tree-shake-icons
