@@ -1,10 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); // Hapa ndio Firebase anaanza
-  runApp(const MyApp());
+  runApp(const MyApp()); // Washa app kwanza!
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +14,53 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Fundi Mteja',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const LoginPage(), // Tunaenda Login moja kwa moja
+      home: const SplashWrapper(),
+    );
+  }
+}
+
+class SplashWrapper extends StatefulWidget {
+  const SplashWrapper({super.key});
+  @override
+  State<SplashWrapper> createState() => _SplashWrapperState();
+}
+
+class _SplashWrapperState extends State<SplashWrapper> {
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: _initialization,
+      builder: (context, snapshot) {
+        // Kama Firebase amegoma
+        if (snapshot.hasError) {
+          return Scaffold(
+            body: Center(
+              child: Text('Firebase imegoma: ${snapshot.error}'),
+            ),
+          );
+        }
+
+        // Kama Firebase amemaliza
+        if (snapshot.connectionState == ConnectionState.done) {
+          return const LoginPage(); // Nenda Login
+        }
+
+        // Bado ana-connect - onyesha loading
+        return const Scaffold(
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircularProgressIndicator(),
+                SizedBox(height: 20),
+                Text('Inaunganisha Firebase...'),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
