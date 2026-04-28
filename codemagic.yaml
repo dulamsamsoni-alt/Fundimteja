@@ -1,22 +1,19 @@
 workflows:
-  android-apk:
-    name: Fundi Mteja APK
-    max_build_duration: 60
+  android-workflow:
+    name: Fundi Mteja Firebase Build
     environment:
       flutter: stable
       java: 17
     scripts:
-      - name: Nuke Android & Recreate V2
+      - name: Nuke Android & Add Firebase
         script: |
           rm -rf android
-          flutter create .
+          flutter create . --project-name fundi_mteja --org com.kidafutali
+          mkdir -p android/app
+          cp google-services.json android/app/
           flutter pub get
       - name: Build APK
         script: |
           flutter build apk --release --no-tree-shake-icons
     artifacts:
-      - build/app/outputs/**/*.apk
-    publishing:
-      email:
-        recipients:
-          - dulamsamsoni@gmail.com
+      - build/app/outputs/flutter-apk/app-release.apk
