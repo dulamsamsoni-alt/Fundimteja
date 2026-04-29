@@ -92,8 +92,19 @@ class _LoginPageState extends State<LoginPage> {
         idToken: googleAuth.idToken,
       );
       await _auth.signInWithCredential(credential);
+      
+      // MUHIMU: NENDA HOME
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HomePage()),
+        );
+      }
     } catch (e) {
-      print('Error: $e');
+      print('LOGIN ERROR: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Login imeshindwa: $e')),
+      );
     }
   }
 
@@ -108,12 +119,45 @@ class _LoginPageState extends State<LoginPage> {
             const Text('Karibu!', style: TextStyle(fontSize: 30)),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: signInWithGoogle, // HII NDIO IMEBADILIKA
+              onPressed: signInWithGoogle,
               child: const Text('Login na Google'),
             ),
             ElevatedButton(
               onPressed: () {},
               child: const Text('Jisajili'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ONGEZA HOMEPAGE HII CHINI YAKE
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Karibu Fundi')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('Umefanikiwa Kuingia!', style: TextStyle(fontSize: 24)),
+            Text('${FirebaseAuth.instance.currentUser?.email}'),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
+                await GoogleSignIn().signOut();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                );
+              },
+              child: const Text('Logout'),
             ),
           ],
         ),
