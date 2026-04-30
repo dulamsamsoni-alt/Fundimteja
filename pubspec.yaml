@@ -2,14 +2,18 @@ name: fundi_mteja
 description: A new Flutter project.
 version: 1.0.0+1
 
- environment:
+environment:
   sdk: '>=2.19.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  # weka dependencies zako zingine hapa
+  
+  # Firebase packages za Google Sign-In
+  firebase_core: ^2.24.2
+  firebase_auth: ^4.15.3
+  google_sign_in: ^6.1.6
 
 dev_dependencies:
   flutter_test:
