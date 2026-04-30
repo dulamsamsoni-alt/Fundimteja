@@ -9,10 +9,37 @@ workflows:
         script: rm -rf android
       - name: Recreate android folder
         script: flutter create .
-      - name: Force Gradle 7.2.0
+      - name: Fix build.gradle
         script: |
-          sed -i "s/com.android.tools.build:gradle:.*/com.android.tools.build:gradle:7.2.0'/g" android/build.gradle
-          sed -i "s/ext.kotlin_version = .*/ext.kotlin_version = '1.7.10'/g" android/build.gradle
+          cat > android/build.gradle << 'EOF'
+          buildscript {
+              ext.kotlin_version = '1.7.10'
+              repositories {
+                  google()
+                  mavenCentral()
+              }
+              dependencies {
+                  classpath 'com.android.tools.build:gradle:7.2.0'
+                  classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+              }
+          }
+          allprojects {
+              repositories {
+                  google()
+                  mavenCentral()
+              }
+          }
+          rootProject.buildDir = '../build'
+          subprojects {
+              project.buildDir = "${rootProject.buildDir}/${project.name}"
+          }
+          subprojects {
+              project.evaluationDependsOn(':app')
+          }
+          tasks.register("clean", Delete) {
+              delete rootProject.buildDir
+          }
+          EOF
       - name: Build APK
         script: flutter build apk --release --no-tree-shake-icons
     artifacts:
