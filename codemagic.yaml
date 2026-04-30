@@ -2,7 +2,7 @@ workflows:
   android-apk:
     name: Fundi Mteja Firebase Build
     environment:
-      flutter: stable
+      flutter: 3.7.12
       java: 17
     scripts:
       - name: Add Firebase
@@ -11,6 +11,6 @@ workflows:
           flutter pub get
       - name: Build APK
         script: |
-          flutter build apk --release --no-tree-shake-icons --android-skip-build-dependency-validation
+          flutter build apk --release --no-tree-shake-icons
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
