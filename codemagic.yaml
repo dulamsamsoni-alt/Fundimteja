@@ -5,9 +5,8 @@ workflows:
       flutter: 3.7.12
       java: 17
     scripts:
-      - name: Add Firebase
+      - name: Flutter Pub Get
         script: |
-          cp google-services.json android/app/
           flutter pub get
       - name: Build APK
         script: |
