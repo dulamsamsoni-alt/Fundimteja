@@ -7,13 +7,13 @@ workflows:
     scripts:
       - name: Nuke Android & Add Firebase
         script: |
-          rm -rf android
-          flutter create . --project-name fundi_mteja --org com.kidafutali
-          mkdir -p android/app
-          cp google-services.json android/app/
-          flutter pub get
-      - name: Build APK
-        script: |
-          flutter build apk --release --no-tree-shake-icons
+          scripts:
+    - name: Add Firebase
+    script: |
+      cp google-services.json android/app/
+      flutter pub get
+    - name: Build APK
+    script: |
+      flutter build apk --release --no-tree-shake-icons
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
