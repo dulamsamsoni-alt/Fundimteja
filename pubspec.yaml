@@ -10,9 +10,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   
   # Firebase packages - versions za zamani kidogo
-  firebase_core: ^2.15.0
-  firebase_auth: ^4.9.0
-  google_sign_in: ^6.1.0
+ firebase_core: 2.15.0
+firebase_auth: 4.12.0
+google_sign_in: 6.1.0
 
 
 dev_dependencies:
