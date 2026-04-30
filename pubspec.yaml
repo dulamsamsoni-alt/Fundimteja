@@ -1,23 +1,20 @@
 name: fundi_mteja
-description: App ya Fundi na Mteja
-publish_to: 'none'
+description: A new Flutter project.
 version: 1.0.0+1
 
-environment:
-  sdk: '>=3.0.0 <4.0.0'
+ environment:
+  sdk: '>=2.19.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  firebase_core: ^3.6.0
-  firebase_auth: ^5.3.1
-  cloud_firestore: ^5.4.4
-  google_sign_in: ^6.2.1
+  cupertino_icons: ^1.0.2
+  # weka dependencies zako zingine hapa
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
+  flutter_lints: ^2.0.0
 
 flutter:
   uses-material-design: true
