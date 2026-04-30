@@ -2,18 +2,17 @@ workflows:
   android-apk:
     name: Fundi Mteja Firebase Build
     environment:
-      flutter: stable
+      flutter: 3.3.10
       java: 11
     scripts:
-      - name: Install Flutter 3.3.10
+      - name: Delete bad android folder
+        script: rm -rf android
+      - name: Recreate android folder
+        script: flutter create .
+      - name: Force Gradle 7.2.0
         script: |
-          git clone https://github.com/flutter/flutter.git -b 3.3.10 $FLUTTER_ROOT --depth 1
-          flutter doctor
-          flutter --version
-      - name: Clean
-        script: flutter clean
-      - name: Get Packages
-        script: flutter pub get
+          sed -i "s/com.android.tools.build:gradle:.*/com.android.tools.build:gradle:7.2.0'/g" android/build.gradle
+          sed -i "s/ext.kotlin_version = .*/ext.kotlin_version = '1.7.10'/g" android/build.gradle
       - name: Build APK
         script: flutter build apk --release --no-tree-shake-icons
     artifacts:
