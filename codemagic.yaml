@@ -5,14 +5,14 @@ workflows:
       flutter: stable
       java: 11
     scripts:
-      - name: Force Flutter 3.3.10
-        script: | 
+      - name: Install Flutter 3.3.10
+        script: |
           git clone https://github.com/flutter/flutter.git -b 3.3.10 $FLUTTER_ROOT --depth 1
           flutter doctor
           flutter --version
       - name: Clean
         script: flutter clean
-      - name: Get Packages  
+      - name: Get Packages
         script: flutter pub get
       - name: Build APK
         script: flutter build apk --release --no-tree-shake-icons
