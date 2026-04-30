@@ -3,11 +3,11 @@ workflows:
     name: Fundi Mteja Firebase Build
     environment:
       flutter: 3.7.12
-      java: 17
+      java: 11
     scripts:
       - name: Clean
         script: flutter clean
-      - name: Get Packages
+      - name: Get Packages  
         script: flutter pub get
       - name: Build APK
         script: flutter build apk --release --no-tree-shake-icons
