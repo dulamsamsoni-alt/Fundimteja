@@ -3,7 +3,7 @@ workflows:
     name: Fundi Mteja Firebase Build
     environment:
       flutter: 3.7.12
-      java: 11
+      java: 17
     scripts:
       - name: Clean
         script: flutter clean
