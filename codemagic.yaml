@@ -2,9 +2,14 @@ workflows:
   android-apk:
     name: Fundi Mteja Firebase Build
     environment:
-      flutter: 3.3.10
+      flutter: stable
       java: 11
     scripts:
+      - name: Force Flutter 3.3.10
+        script: | 
+          git clone https://github.com/flutter/flutter.git -b 3.3.10 $FLUTTER_ROOT --depth 1
+          flutter doctor
+          flutter --version
       - name: Clean
         script: flutter clean
       - name: Get Packages  
