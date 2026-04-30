@@ -5,15 +5,16 @@ version: 1.0.0+1
 environment:
   sdk: '>=2.19.0 <4.0.0'
 
+
 dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
   
-  # Firebase packages za Google Sign-In
-  firebase_core: ^2.24.2
-  firebase_auth: ^4.15.3
-  google_sign_in: ^6.1.6
+  # Firebase packages - versions za zamani kidogo
+  firebase_core: ^2.15.0
+  firebase_auth: ^4.9.0
+  google_sign_in: ^6.1.0
 
 dev_dependencies:
   flutter_test:
