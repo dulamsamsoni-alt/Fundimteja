@@ -5,15 +5,12 @@ workflows:
       flutter: stable
       java: 17
     scripts:
-      - name: Nuke Android & Add Firebase
+      - name: Add Firebase
         script: |
-          scripts:
-    - name: Add Firebase
-    script: |
-      cp google-services.json android/app/
-      flutter pub get
-    - name: Build APK
-    script: |
-      flutter build apk --release --no-tree-shake-icons
+          cp google-services.json android/app/
+          flutter pub get
+      - name: Build APK
+        script: |
+          flutter build apk --release --no-tree-shake-icons
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
