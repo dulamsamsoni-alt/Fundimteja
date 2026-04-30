@@ -4,8 +4,6 @@ version: 1.0.0+1
 
 environment:
   sdk: '>=2.19.0 <4.0.0'
-
-
 dependencies:
   flutter:
     sdk: flutter
@@ -15,6 +13,7 @@ dependencies:
   firebase_core: ^2.15.0
   firebase_auth: ^4.9.0
   google_sign_in: ^6.1.0
+
 
 dev_dependencies:
   flutter_test:
