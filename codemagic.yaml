@@ -5,19 +5,11 @@ workflows:
       flutter: 3.7.12
       java: 17
     scripts:
-      - name: Flutter Clean Cache
-        script: |
-          flutter clean
-          rm -rf ~/.pub-cache
-          rm pubspec.lock
-      - name: Force Firebase Versions
-        script: |
-          flutter pub add firebase_core:2.15.0
-          flutter pub add firebase_auth:4.12.0
-          flutter pub add google_sign_in:6.1.0
-          flutter pub get
+      - name: Clean
+        script: flutter clean
+      - name: Get Packages
+        script: flutter pub get
       - name: Build APK
-        script: |
-          flutter build apk --release --no-tree-shake-icons
+        script: flutter build apk --release --no-tree-shake-icons
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
