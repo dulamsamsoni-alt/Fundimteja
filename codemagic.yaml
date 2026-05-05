@@ -1,16 +1,13 @@
 workflows:
   android-workflow:
     name: Android Release
-    max_build_duration: 60
     environment:
-      flutter: stable
+      flutter: 3.29.0
       java: 17
     scripts:
-      - name: Get dependencies
-        script: flutter pub get
       - name: Build Universal APK
         script: | 
           flutter clean
-          flutter build apk --release --target-platform android-arm,android-arm64,android-x64
+          flutter build apk --release
     artifacts:
-      - build/**/outputs/**/*.apk
+      - build/app/outputs/flutter-apk/*.apk
