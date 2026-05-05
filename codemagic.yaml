@@ -8,7 +8,9 @@ workflows:
     scripts:
       - name: Get dependencies
         script: flutter pub get
-      - name: Build APK
-        script: flutter build apk --release
+      - name: Build Universal APK
+        script: | 
+          flutter clean
+          flutter build apk --release --target-platform android-arm,android-arm64,android-x64
     artifacts:
       - build/**/outputs/**/*.apk
