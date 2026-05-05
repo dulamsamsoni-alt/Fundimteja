@@ -19,3 +19,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  
+  # HII NDIO ILISAHULIWA - INAINGIZA GAME YAKO YOTE
+  assets:
+    - assets/
+    - assets/images/
+    - assets/audio/
