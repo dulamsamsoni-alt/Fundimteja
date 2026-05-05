@@ -23,15 +23,9 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.example.fundi_mteja"
+    namespace "com.example.dulam"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
-
-    splits {
-        abi {
-            enable false
-        }
-    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -47,22 +41,19 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.fundi_mteja"
+        applicationId "com.example.dulam"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-                   splits {
-        abi {
-            enable false
-            universalApk true
-        }
-    }
+        multiDexEnabled true
     }
 
     buildTypes {
         release {
-            // Signing handled by Codemagic
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            shrinkResources false
         }
     }
 }
