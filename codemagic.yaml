@@ -1,12 +1,12 @@
 workflows:
-  android-workflow:
+  android-apk:
     name: Android Release
     environment:
       flutter: 3.29.0
       java: 17
     scripts:
       - name: Build Universal APK
-        script: | 
+        script: |
           flutter clean
           flutter build apk --release --no-tree-shake-icons
     artifacts:
