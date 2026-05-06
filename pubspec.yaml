@@ -1,7 +1,6 @@
-name: fundi_mteja
+name: fundi_metja
 description: A new Flutter project.
 publish_to: 'none'
-
 version: 1.0.0+1
 
 environment:
@@ -20,8 +19,11 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   
-  # HII NDIO ILISAHULIWA - INAINGIZA GAME YAKO YOTE
-  assets:
-    - assets/
-    - assets/images/
-    - assets/audio/
+  # ==========================================
+  # SEHEMU YA ASSETS - IKIWA FOLDER HAZIPO, ZICOMMENT AU ZIONDOE
+  # ==========================================
+  
+  # assets:
+  #   - assets/
+  #   - assets/images/
+  #   - assets/audio/
