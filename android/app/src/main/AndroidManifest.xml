@@ -12,7 +12,7 @@
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
-            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallScreen|keyboardLayout"
+            android:configChanges="orientation|screenSize"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
 
